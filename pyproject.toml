@@ -27,7 +27,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">=3.7,<3.12"
-
+momento = {path = "../client-sdk-python", develop = true}
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.2.1"
@@ -44,6 +44,10 @@ types-setuptools = "^65.7.0.3"
 [tool.poetry.group.format.dependencies]
 black = "^22.12.0"
 isort = "^5.11.4"
+
+
+[tool.poetry.group.codegen.dependencies]
+libcst = "^0.4.9"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
@@ -77,6 +81,39 @@ disallow_subclassing_any    = false
 disallow_untyped_calls      = true
 disallow_untyped_decorators = true
 strict_equality             = true
+
+[[tool.mypy.overrides]]
+module = "client_sdk_python_signer.internal.aio._scs_control_client"
+disallow_any_expr = false
+
+[[tool.mypy.overrides]]
+module = "client_sdk_python_signer.responses.control.signing_keys"
+disallow_any_expr = false
+
+[[tool.mypy.overrides]]
+module = "client_sdk_python_signer.simple_cache_client_async"
+disallow_any_expr = false
+warn_return_any = false
+
+[[tool.mypy.overrides]]
+module = "client_sdk_python_signer.simple_cache_client"
+disallow_any_expr = false
+warn_return_any = false
+
+[[tool.mypy.overrides]]
+module = "client_sdk_python_signer.momento_signer"
+disallow_any_expr = false
+
+[[tool.mypy.overrides]]
+module = [
+    "grpc.aio.*",  # https://github.com/shabbyrobe/grpc-stubs/issues/22
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "momento.*"
+disallow_any_expr           = false
+
 
 [tool.black]
 line-length = 120

@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "client-sdk-python-signer"
+version = "0.0.0"
+description = ""
+authors = ["Momento <hello@momentohq.com>"]
+readme = "README.md"
+packages = [{include = "client_sdk_python_signer"}]
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.12"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

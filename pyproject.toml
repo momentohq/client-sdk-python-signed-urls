@@ -111,6 +111,12 @@ module = [
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
+module = "tests.*"
+disallow_any_expr = false
+disallow_untyped_calls = false
+
+
+[[tool.mypy.overrides]]
 module = "momento.*"
 disallow_any_expr           = false
 

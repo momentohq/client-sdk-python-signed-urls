@@ -3,7 +3,7 @@ name = "momento-signed-urls"
 version = "0.0.0"
 
 authors = ["Momento <hello@momentohq.com>"]
-description = "Signer SDK for Momento"
+description = "Signed URL SDK for Momento"
 
 license = "Apache-2.0"
 

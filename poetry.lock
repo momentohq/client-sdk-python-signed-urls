@@ -418,6 +418,7 @@ develop = true
 [package.dependencies]
 grpcio = "1.50.0"
 momento-wire-types = "0.31.1"
+pyjwt = "2.4.0"
 
 [package.source]
 type = "directory"
@@ -902,4 +903,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.7,<3.12"
-content-hash = "6381d80ff2233db94691fccd633476ed1af912bddad876f2d72984b641f5ae56"
+content-hash = "6de43472c0a47afd297e92fd837cdabac3a124849c7b22801cc2a29b4ccb55ad"

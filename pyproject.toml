@@ -29,7 +29,6 @@ classifiers = [
 python = ">=3.7,<3.12"
 
 momento = {path = "../client-sdk-python", develop = true}
-pyjwt = "2.4.0"
 # We need this for pyjwt, but the pyjwt crypto extra uses version >=3.4
 # Since this depends on glibc, which is external to python,
 # the crytography version introduces incompatibilities in specific

@@ -128,10 +128,16 @@ disallow_any_decorated = false
 disallow_any_expr = false
 disallow_untyped_calls = false
 
-
+# TODO add the py.typed file to these packages to be PEP561 compliant
+# see: https://peps.python.org/pep-0561/
 [[tool.mypy.overrides]]
 module = "momento.*"
-disallow_any_expr           = false
+disallow_any_expr = false
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "momento_wire_types.*"
+ignore_missing_imports = true
 
 
 [tool.black]

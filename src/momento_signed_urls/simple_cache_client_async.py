@@ -40,7 +40,7 @@ from momento_signed_urls.responses import (
 class SimpleCacheClientAsync:
     """Async Simple Cache Client"""
 
-    def __init__(self, configuration: Configuration, credential_provider: CredentialProvider, default_ttl: timedelta):
+    def __init__(self, configuration: Configuration, credential_provider: CredentialProvider):
         """Creates an async SimpleCacheClient
 
         Args:

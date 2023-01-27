@@ -1,6 +1,5 @@
 import asyncio
 import os
-from datetime import timedelta
 from typing import Optional
 
 import pytest
@@ -22,8 +21,6 @@ TEST_CACHE_NAME: Optional[str] = os.getenv("TEST_CACHE_NAME")
 if not TEST_CACHE_NAME:
     raise RuntimeError("Integration tests require TEST_CACHE_NAME env var; see README for more details.")
 
-DEFAULT_TTL_SECONDS: timedelta = timedelta(seconds=60)
-
 
 #############################################
 # Integration test fixtures: data and clients
@@ -43,7 +40,7 @@ def event_loop() -> asyncio.AbstractEventLoop:
 def client() -> SimpleCacheClient:
     configuration = TEST_CONFIGURATION
     credential_provider = TEST_AUTH_PROVIDER
-    with SimpleCacheClient(configuration, credential_provider, DEFAULT_TTL_SECONDS) as _client:
+    with SimpleCacheClient(configuration, credential_provider) as _client:
         yield _client
 
 
@@ -51,5 +48,5 @@ def client() -> SimpleCacheClient:
 async def client_async() -> SimpleCacheClientAsync:
     configuration = TEST_CONFIGURATION
     credential_provider = TEST_AUTH_PROVIDER
-    async with SimpleCacheClientAsync(configuration, credential_provider, DEFAULT_TTL_SECONDS) as _client:
+    async with SimpleCacheClientAsync(configuration, credential_provider) as _client:
         yield _client

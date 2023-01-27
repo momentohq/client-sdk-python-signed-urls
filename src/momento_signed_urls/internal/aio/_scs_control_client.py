@@ -12,8 +12,8 @@ from momento import logs
 from momento.auth import CredentialProvider
 from momento.errors import convert_error
 from momento.internal._utilities import _validate_ttl
-from client_sdk_python_signer.internal.aio._scs_grpc_manager import _SigningControlGrpcManager
-from momento.responses import (
+from momento_signed_urls.internal.aio._scs_grpc_manager import _SigningControlGrpcManager
+from momento_signed_urls.responses import (
     CreateSigningKeyResponse,
     ListSigningKeysResponse,
     RevokeSigningKeyResponse,

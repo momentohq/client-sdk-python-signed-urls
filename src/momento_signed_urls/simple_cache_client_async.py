@@ -8,7 +8,7 @@ from momento.config import Configuration
 
 try:
     from momento.internal._utilities import _validate_request_timeout
-    from client_sdk_python_signer.internal.aio._scs_control_client import _ScsControlClient
+    from momento_signed_urls.internal.aio._scs_control_client import _ScsControlClient
 except ImportError as e:
     if e.name == "cygrpc":
         import sys
@@ -30,7 +30,7 @@ except ImportError as e:
         print("-".join("" for _ in range(99)), file=sys.stderr)
     raise e
 
-from client_sdk_python_signer.responses import (
+from momento_signed_urls.responses import (
     CreateSigningKeyResponse,
     ListSigningKeysResponse,
     RevokeSigningKeyResponse,

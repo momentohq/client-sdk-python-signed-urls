@@ -6,7 +6,7 @@ from typing import Optional
 import pytest
 import pytest_asyncio
 
-from momento import SimpleCacheClient, SimpleCacheClientAsync
+from momento_signed_urls import SimpleCacheClient, SimpleCacheClientAsync
 from momento.auth import EnvMomentoTokenProvider
 from momento.config import Laptop
 
@@ -44,12 +44,7 @@ def client() -> SimpleCacheClient:
     configuration = TEST_CONFIGURATION
     credential_provider = TEST_AUTH_PROVIDER
     with SimpleCacheClient(configuration, credential_provider, DEFAULT_TTL_SECONDS) as _client:
-        # Ensure test cache exists
-        _client.create_cache(TEST_CACHE_NAME)
-        try:
-            yield _client
-        finally:
-            _client.delete_cache(TEST_CACHE_NAME)
+        yield _client
 
 
 @pytest_asyncio.fixture(scope="session")
@@ -57,10 +52,4 @@ async def client_async() -> SimpleCacheClientAsync:
     configuration = TEST_CONFIGURATION
     credential_provider = TEST_AUTH_PROVIDER
     async with SimpleCacheClientAsync(configuration, credential_provider, DEFAULT_TTL_SECONDS) as _client:
-        # Ensure test cache exists
-        # TODO consider deleting cache on when test runner shuts down
-        await _client.create_cache(TEST_CACHE_NAME)
-        try:
-            yield _client
-        finally:
-            await _client.delete_cache(TEST_CACHE_NAME)
+        yield _client

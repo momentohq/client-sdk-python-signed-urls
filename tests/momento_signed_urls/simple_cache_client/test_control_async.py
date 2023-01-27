@@ -1,6 +1,6 @@
 from datetime import timedelta
 
-from client_sdk_python_signer import SimpleCacheClientAsync
+from momento_signed_urls import SimpleCacheClientAsync
 
 
 async def test_create_list_revoke_signing_keys(client_async: SimpleCacheClientAsync) -> None:

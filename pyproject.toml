@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "client-sdk-python-signer"
+name = "momento-signed-urls"
 version = "0.0.0"
 
 authors = ["Momento <hello@momentohq.com>"]
@@ -10,7 +10,7 @@ license = "Apache-2.0"
 documentation = "https://docs.momentohq.com/"
 homepage = "https://gomomento.com"
 readme = "README.md"
-repository = "https://github.com/momentohq/client-sdk-python-signer"
+repository = "https://github.com/momentohq/client-sdk-python-signed-urls"
 
 keywords = ["Momento", "caching", "key-value store", "serverless"]
 
@@ -91,25 +91,29 @@ disallow_untyped_decorators = true
 strict_equality             = true
 
 [[tool.mypy.overrides]]
-module = "client_sdk_python_signer.internal.aio._scs_control_client"
+module = "momento_signed_urls.internal.aio._scs_control_client"
 disallow_any_expr = false
 
 [[tool.mypy.overrides]]
-module = "client_sdk_python_signer.responses.control.signing_keys"
+module = "momento_signed_urls.internal.synchronous._scs_control_client"
 disallow_any_expr = false
 
 [[tool.mypy.overrides]]
-module = "client_sdk_python_signer.simple_cache_client_async"
+module = "momento_signed_urls.responses.control.signing_keys"
+disallow_any_expr = false
+
+[[tool.mypy.overrides]]
+module = "momento_signed_urls.simple_cache_client_async"
 disallow_any_expr = false
 warn_return_any = false
 
 [[tool.mypy.overrides]]
-module = "client_sdk_python_signer.simple_cache_client"
+module = "momento_signed_urls.simple_cache_client"
 disallow_any_expr = false
 warn_return_any = false
 
 [[tool.mypy.overrides]]
-module = "client_sdk_python_signer.momento_signer"
+module = "momento_signed_urls.momento_signer"
 disallow_any_expr = false
 
 [[tool.mypy.overrides]]

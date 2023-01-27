@@ -8,6 +8,7 @@ from momento.config import Configuration
 
 try:
     from momento.internal._utilities import _validate_request_timeout
+
     from momento_signed_urls.internal.aio._scs_control_client import _ScsControlClient
 except ImportError as e:
     if e.name == "cygrpc":

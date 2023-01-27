@@ -4,10 +4,10 @@ from typing import Optional
 
 import pytest
 import pytest_asyncio
-
-from momento_signed_urls import SimpleCacheClient, SimpleCacheClientAsync
 from momento.auth import EnvMomentoTokenProvider
 from momento.config import Laptop
+
+from momento_signed_urls import SimpleCacheClient, SimpleCacheClientAsync
 
 #######################
 # Integration test data

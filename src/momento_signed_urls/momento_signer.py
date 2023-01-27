@@ -5,7 +5,6 @@ from urllib.parse import quote
 
 import jwt
 from jwt.api_jwk import PyJWK
-
 from momento.errors import InvalidArgumentException
 
 

@@ -1,5 +1,4 @@
 import pkg_resources
-
 from momento.internal.synchronous._scs_control_client import _ControlGrpcManager
 
 

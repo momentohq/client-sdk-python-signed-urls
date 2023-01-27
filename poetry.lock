@@ -413,16 +413,19 @@ category = "main"
 optional = false
 python-versions = ">=3.7,<3.12"
 files = []
-develop = true
+develop = false
 
 [package.dependencies]
+cryptography = "3.4.8"
 grpcio = "1.50.0"
 momento-wire-types = "0.31.1"
 pyjwt = "2.4.0"
 
 [package.source]
-type = "directory"
-url = "../client-sdk-python"
+type = "git"
+url = "https://github.com/momentohq/client-sdk-python.git"
+reference = "HEAD"
+resolved_reference = "284aceaf4fdb0de1d6f92e5d507f8029f484f761"
 
 [[package]]
 name = "momento-wire-types"
@@ -903,4 +906,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.7,<3.12"
-content-hash = "6de43472c0a47afd297e92fd837cdabac3a124849c7b22801cc2a29b4ccb55ad"
+content-hash = "26bc41a769e9d6e9698f4e1d714da77a4dbd4bd051a5be30886da2c93f16038e"

@@ -416,10 +416,8 @@ files = []
 develop = true
 
 [package.dependencies]
-cryptography = "3.4.8"
 grpcio = "1.50.0"
 momento-wire-types = "0.31.1"
-pyjwt = "2.4.0"
 
 [package.source]
 type = "directory"
@@ -904,4 +902,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.7,<3.12"
-content-hash = "fb58e7b86b5ed6e0f358c68eb6ec594a153c49be6e69e7bf257a2e1ead3463b6"
+content-hash = "6381d80ff2233db94691fccd633476ed1af912bddad876f2d72984b641f5ae56"

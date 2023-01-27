@@ -1,6 +1,6 @@
-# Welcome to client-sdk-python-signer contributing guide :wave:
+# Welcome to client-sdk-python-signed-urls contributing guide :wave:
 
-Thank you for taking your time to contribute to our Python Signer SDK!
+Thank you for taking your time to contribute to our Python Signed URL SDK!
 <br/>
 This guide will provide you information to start your own development and testing.
 <br/>
@@ -190,7 +190,7 @@ Fear not! This is not twice the work. Since the synchronous client delegates beh
 to the asynchronous one, we can re-use the async test cases.
 
 When developing new test cases, only write tests for the async client in the appropriate
-`test_*_async.py` file. Then run `tests/scripts/sync_from_async.sh` to generate
+`test_*_async.py` file. Then run `make gen-sync` to generate
 the synchronous client tests.
 
 <br/>

@@ -1,0 +1,164 @@
+[tool.poetry]
+name = "momento-signed-urls"
+version = "0.0.0"
+
+authors = ["Momento <hello@momentohq.com>"]
+description = "Signed URL SDK for Momento"
+
+license = "Apache-2.0"
+
+documentation = "https://docs.momentohq.com/"
+homepage = "https://gomomento.com"
+readme = "README.md"
+repository = "https://github.com/momentohq/client-sdk-python-signed-urls"
+
+keywords = ["Momento", "caching", "key-value store", "serverless"]
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Operating System :: OS Independent",
+  "Framework :: AsnycIO",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Topic :: Internet",
+  "Natural Language :: English",
+  "Typing :: Typed",
+]
+
+[tool.poetry.dependencies]
+python = ">=3.7,<3.12"
+
+momento = "0.19.0"
+# We need this for pyjwt, but the pyjwt crypto extra uses version >=3.4
+# Since this depends on glibc, which is external to python,
+# the crytography version introduces incompatibilities in specific
+# environments (eg Lambda). We pin to 3.4.8 to prevent a moving target.
+# see: https://github.com/jpadilla/pyjwt/issues/800
+cryptography = "3.4.8"
+
+
+[tool.poetry.group.test.dependencies]
+pytest = "^7.2.1"
+pytest-asyncio = "^0.20.3"
+pytest-sugar = "^0.9.6"
+
+
+[tool.poetry.group.lint.dependencies]
+flake8 = "^5.0.0"
+mypy = "^0.991"
+types-setuptools = "^65.7.0.3"
+
+
+[tool.poetry.group.format.dependencies]
+black = "^22.12.0"
+isort = "^5.11.4"
+
+
+[tool.poetry.group.codegen.dependencies]
+libcst = "^0.4.9"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+
+[tool.mypy]
+python_version = "3.7"
+
+# Increase our expectations
+
+check_untyped_defs          = true
+disallow_incomplete_defs    = true
+disallow_untyped_defs       = true
+no_implicit_optional        = true
+show_column_numbers         = true
+show_error_codes            = true
+strict_optional             = true
+warn_no_return              = true
+warn_redundant_casts        = true
+warn_return_any             = true
+warn_unreachable            = true
+warn_unused_ignores         = true
+
+# These are too strict for us at the moment
+
+disallow_any_decorated      = true
+disallow_any_explicit       = true
+disallow_any_expr           = true
+disallow_any_generics       = true
+disallow_any_unimported     = false
+disallow_subclassing_any    = false
+disallow_untyped_calls      = true
+disallow_untyped_decorators = true
+strict_equality             = true
+
+[[tool.mypy.overrides]]
+module = "momento_signed_urls.internal.aio._scs_control_client"
+disallow_any_expr = false
+
+[[tool.mypy.overrides]]
+module = "momento_signed_urls.internal.synchronous._scs_control_client"
+disallow_any_expr = false
+
+[[tool.mypy.overrides]]
+module = "momento_signed_urls.responses.control.signing_keys"
+disallow_any_expr = false
+
+[[tool.mypy.overrides]]
+module = "momento_signed_urls.simple_cache_client_async"
+disallow_any_expr = false
+warn_return_any = false
+
+[[tool.mypy.overrides]]
+module = "momento_signed_urls.simple_cache_client"
+disallow_any_expr = false
+warn_return_any = false
+
+[[tool.mypy.overrides]]
+module = "momento_signed_urls.momento_signer"
+disallow_any_expr = false
+
+[[tool.mypy.overrides]]
+module = [
+    "grpc.aio.*",  # https://github.com/shabbyrobe/grpc-stubs/issues/22
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "tests.*"
+disallow_any_decorated = false
+disallow_any_expr = false
+disallow_untyped_calls = false
+
+# TODO add the py.typed file to these packages to be PEP561 compliant
+# see: https://peps.python.org/pep-0561/
+[[tool.mypy.overrides]]
+module = "momento.*"
+disallow_any_expr = false
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "momento_wire_types.*"
+ignore_missing_imports = true
+
+
+[tool.black]
+line-length = 120
+target-version = ["py37"]
+include = "\\.pyi?$"
+exclude = """
+/(
+  \\.git
+  | \\.mypy_cache
+  | \\.pytest_cache
+  | \\.venv
+  | dist
+)
+"""
+
+[tool.isort]
+profile = "black"
+src_paths = ["src", "tests"]
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

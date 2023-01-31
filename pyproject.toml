@@ -91,34 +91,27 @@ disallow_untyped_decorators = true
 strict_equality             = true
 
 [[tool.mypy.overrides]]
-module = "momento_signed_urls.internal.aio._scs_control_client"
+module = [
+  "momento_signed_urls.internal.aio._scs_control_client",
+  "momento_signed_urls.internal.synchronous._scs_control_client",
+  "momento_signed_urls.responses.control.signing_keys",
+  "momento_signed_urls.momento_signer"
+]
 disallow_any_expr = false
 
-[[tool.mypy.overrides]]
-module = "momento_signed_urls.internal.synchronous._scs_control_client"
-disallow_any_expr = false
 
 [[tool.mypy.overrides]]
-module = "momento_signed_urls.responses.control.signing_keys"
-disallow_any_expr = false
-
-[[tool.mypy.overrides]]
-module = "momento_signed_urls.simple_cache_client_async"
+module = [
+  "momento_signed_urls.simple_cache_client_async",
+  "momento_signed_urls.simple_cache_client"
+]
 disallow_any_expr = false
 warn_return_any = false
-
-[[tool.mypy.overrides]]
-module = "momento_signed_urls.simple_cache_client"
-disallow_any_expr = false
-warn_return_any = false
-
-[[tool.mypy.overrides]]
-module = "momento_signed_urls.momento_signer"
-disallow_any_expr = false
 
 [[tool.mypy.overrides]]
 module = [
     "grpc.aio.*",  # https://github.com/shabbyrobe/grpc-stubs/issues/22
+    "momento_wire_types.*"
 ]
 ignore_missing_imports = true
 
@@ -134,11 +127,6 @@ disallow_untyped_calls = false
 module = "momento.*"
 disallow_any_expr = false
 ignore_missing_imports = true
-
-[[tool.mypy.overrides]]
-module = "momento_wire_types.*"
-ignore_missing_imports = true
-
 
 [tool.black]
 line-length = 120

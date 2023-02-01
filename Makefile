@@ -24,12 +24,6 @@ lint:
 	@poetry run mypy src
 	@poetry run flake8 src
 
-.PHONY: gen-sync
-## Generate synchronous code and tests from asynchronous code.
-gen-sync:
-	@poetry run python -m client_sdk_python_signer.internal.codegen src/client_sdk_python_signer/internal/aio/_scs_control_client.py src/client_sdk_python_signer/internal/synchronous/_scs_control_client.py
-	@poetry run python -m client_sdk_python_signer.internal.codegen src/client_sdk_python_signer/simple_cache_client_async.py src/client_sdk_python_signer/simple_cache_client.py
-
 .PHONY: test
 ## Run unit and integration tests with pytest
 test:
@@ -37,7 +31,7 @@ test:
 
 .PHONY: precommit
 ## Run format, lint, and test as a step before committing.
-precommit: gen-sync format lint test
+precommit: format lint test
 	@echo.
 
 .PHONY: clean

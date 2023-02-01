@@ -1,7 +1,6 @@
 import jwt
 import pytest
 from jwt.api_jwk import PyJWK
-from momento.errors import InvalidArgumentException
 
 from momento_signed_urls import CacheOperation, MomentoSigner, SigningRequest
 from tests.utils import uuid_str
@@ -129,17 +128,17 @@ def test_es_no_alg() -> None:
 
 
 def test_empty_jwk_json_string() -> None:
-    with pytest.raises(InvalidArgumentException):
+    with pytest.raises(ValueError):
         MomentoSigner("")
 
 
 def test_nothing_jwk_json_string() -> None:
-    with pytest.raises(InvalidArgumentException):
+    with pytest.raises(ValueError):
         MomentoSigner("{}")
 
 
 def test_incomplete_jwk_json_string() -> None:
-    with pytest.raises(InvalidArgumentException):
+    with pytest.raises(ValueError):
         MomentoSigner('{"alg":"foo","kid":"bar","kty":"RSA"}')
 
 
@@ -179,7 +178,7 @@ def test_create_presigned_url_for_set() -> None:
 
 
 def test_create_presigned_url_for_set_missing_ttl() -> None:
-    with pytest.raises(InvalidArgumentException):
+    with pytest.raises(ValueError):
         MomentoSigner(_RSA_256_JWK).create_presigned_url(
             "example.com",
             SigningRequest(

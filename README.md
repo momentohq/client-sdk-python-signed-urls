@@ -1,4 +1,4 @@
-# Momento client-sdk-python-signed-urls
+# Momento client-sdk-python-signer
 
 :warning: Experimental SDK :warning:
 

@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "momento-signed-urls"
+name = "momento-signer"
 version = "0.0.0"
 
 authors = ["Momento <hello@momentohq.com>"]
@@ -92,7 +92,7 @@ disallow_untyped_decorators = true
 strict_equality             = true
 
 [[tool.mypy.overrides]]
-module = "momento_signed_urls.momento_signer"
+module = "momento_signer.momento_signer"
 disallow_any_expr = false
 
 [[tool.mypy.overrides]]

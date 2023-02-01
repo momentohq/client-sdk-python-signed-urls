@@ -98,5 +98,5 @@ jobs:
 
       - name: Publish package
         env:
-          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYTHON_CUSTOMER_SDK_PYPI_TOKEN }}
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_MOMENTO_ACCOUNT_WIDE_TOKEN }}
         run: poetry publish

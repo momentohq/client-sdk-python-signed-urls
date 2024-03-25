@@ -25,7 +25,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.7,<3.12"
+python = "^3.7"
 
 # We need this for pyjwt, but the pyjwt crypto extra uses version >=3.4
 # Since this depends on glibc, which is external to python,

@@ -53,10 +53,6 @@ types-setuptools = "^65.7.0.3"
 black = "^22.12.0"
 isort = "^5.11.4"
 
-
-[tool.poetry.group.codegen.dependencies]
-libcst = "^0.4.9"
-
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 

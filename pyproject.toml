@@ -25,7 +25,7 @@ classifiers = [
 ]
 
 [tool.poetry.dependencies]
-python = ">=3.7,<3.12"
+python = "^3.7"
 
 # We need this for pyjwt, but the pyjwt crypto extra uses version >=3.4
 # Since this depends on glibc, which is external to python,
@@ -44,18 +44,9 @@ pytest-sugar = "^0.9.6"
 
 
 [tool.poetry.group.lint.dependencies]
-flake8 = "^5.0.0"
 mypy = "^0.991"
 types-setuptools = "^65.7.0.3"
-
-
-[tool.poetry.group.format.dependencies]
-black = "^22.12.0"
-isort = "^5.11.4"
-
-
-[tool.poetry.group.codegen.dependencies]
-libcst = "^0.4.9"
+ruff = "^0.3.4"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
@@ -101,24 +92,41 @@ disallow_any_expr = false
 disallow_untyped_calls = false
 
 
-[tool.black]
+[tool.ruff]
+lint.select = [
+  "D", # docstring errors
+  "E", # pycodestyle errors
+  "W", # pycodestyle warnings
+  "F", # pyflakes
+  "I", # isort
+  "C", # flake8-comprehensions
+  "B", # flake8-bugbear
+]
+lint.ignore = [
+  "B008", # function calls as default arg; collection ttl
+  "B024", # abstract class without abstract methods
+  "E501", # line too long, handled by black
+  "C901", # function too complex
+  "D100", # missing docstring in public module
+  "D101", # missing docstring in public class
+  "D102", # missing docstring in public method
+  "D103", # missing docstring in public function
+  "D104", # missing docstring in public package
+  "D105", # missing docstring in magic method
+  "D106", # missing docstring in public nested class
+  "D107", # missing docstring in __init__
+]
 line-length = 120
-target-version = ["py37"]
-include = "\\.pyi?$"
-exclude = """
-/(
-  \\.git
-  | \\.mypy_cache
-  | \\.pytest_cache
-  | \\.venv
-  | dist
-)
-"""
+target-version = "py37"
+fix = true
 
-[tool.isort]
-profile = "black"
-src_paths = ["src", "tests"]
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+"src/momento/common_data/vector_index/item.py" = ["E721"]
+"src/momento/requests/vector_index/filters.py" = ["E721"]
 
+[tool.ruff.lint.pydocstyle]
+convention = "google"
 
 [build-system]
 requires = ["poetry-core"]

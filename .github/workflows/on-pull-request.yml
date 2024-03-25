@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-20.04
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11", "3.12"]
     env:
       TEST_AUTH_TOKEN: ${{ secrets.ALPHA_TEST_AUTH_TOKEN }}
       TEST_CACHE_NAME: python-integration-test-${{ matrix.python-version }}-${{ github.sha }}
@@ -42,14 +42,11 @@ jobs:
         if: matrix.python-version == '3.7'
         run: poetry run mypy src/
 
-      - name: Run flake8
-        run: poetry run flake8 src/
+      - name: Run ruff analyzer
+        run: poetry run ruff check --no-fix src tests
 
-      - name: Run black
-        run: poetry run black src tests --check --diff
-
-      - name: Run isort
-        run: poetry run isort . --check --diff
+      - name: Run ruff formatter
+        run: poetry run ruff format --check --diff src tests
 
       - name: Run tests
         run: poetry run pytest -p no:sugar -q

@@ -15,14 +15,13 @@ install:
 .PHONY: format
 ## Format the code using black and isort
 format:
-	@poetry run black src tests
-	@poetry run isort .
+	@poetry run ruff format src tests
 
 .PHONY: lint
 ## Lint the code using mypy and flake8
 lint:
+	@poetry run ruff check src tests
 	@poetry run mypy src
-	@poetry run flake8 src
 
 .PHONY: test
 ## Run unit and integration tests with pytest

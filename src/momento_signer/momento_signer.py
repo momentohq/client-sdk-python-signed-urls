@@ -108,7 +108,12 @@ class MomentoSigner:
 
         # jwt.encode will automatically insert "typ" and "alg" into the header for us.
         # We still need to specify "kid" to be included in the header however.
-        return jwt.encode(claims, self._jwk.key, algorithm=self._alg, headers={"kid": self._jwk.key_id})
+        return jwt.encode(
+            claims,
+            self._jwk.key,
+            algorithm=self._alg,
+            headers={"kid": self._jwk.key_id},
+        )
 
     def create_presigned_url(self, hostname: str, signing_request: SigningRequest) -> str:
         """Creates a pre-signed HTTPS URL.

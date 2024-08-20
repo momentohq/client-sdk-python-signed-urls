@@ -155,7 +155,7 @@ def test_create_presigned_url_for_get() -> None:
 
     assert (
         result
-        == "https://rest.example.com/cache/get/%21%23%24%26%27%28%29%2A%2B%2C%2F%3A%3B%3D%3F%40%5B%5D/%21%23%24%26%27%28%29%2A%2B%2C%2F%3A%3B%3D%3F%40%5B%5D?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InRlc3RLZXlJZCJ9.eyJleHAiOjQwNzkyNzYwOTgsImNhY2hlIjoiISMkJicoKSorLC86Oz0_QFtdIiwia2V5IjoiISMkJicoKSorLC86Oz0_QFtdIiwibWV0aG9kIjpbImdldCJdfQ.TpM6MLCnEWKJfwy0Mp5n9c9ygS5KwklpHqNTTCCncICTgENblbz3BGMUXUw4ljrTCt0uwxebX2iIROMGP32SevMlcygxsnXweHHVvkONAeok5ASvhiQtJcClb_4BMCkxPL7OlmaDlJVrcWdIqNa5E_HG6IWA6TXDJDzRrNPvknD7TVMRYDxaUMagdF3kPMBXZeO6CdlhLGb6Kfhmyc2mkdt8o-aCK3-n2vIXqiEwRNkSVr2iGBlP1l6nlVQ_dXfb0I56fLTncF1xWI1zDf2pbiQn9S3Z4n45_0C2yZy_FI8csWM2gYNqKK5VqsxkpbhlFJWyINxnyNA-FMBDhdJUZQ"  # noqa: E501
+        == "https://api.example.com/cache/%21%23%24%26%27%28%29%2A%2B%2C%2F%3A%3B%3D%3F%40%5B%5D/%21%23%24%26%27%28%29%2A%2B%2C%2F%3A%3B%3D%3F%40%5B%5D?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InRlc3RLZXlJZCJ9.eyJleHAiOjQwNzkyNzYwOTgsImNhY2hlIjoiISMkJicoKSorLC86Oz0_QFtdIiwia2V5IjoiISMkJicoKSorLC86Oz0_QFtdIiwibWV0aG9kIjpbImdldCJdfQ.TpM6MLCnEWKJfwy0Mp5n9c9ygS5KwklpHqNTTCCncICTgENblbz3BGMUXUw4ljrTCt0uwxebX2iIROMGP32SevMlcygxsnXweHHVvkONAeok5ASvhiQtJcClb_4BMCkxPL7OlmaDlJVrcWdIqNa5E_HG6IWA6TXDJDzRrNPvknD7TVMRYDxaUMagdF3kPMBXZeO6CdlhLGb6Kfhmyc2mkdt8o-aCK3-n2vIXqiEwRNkSVr2iGBlP1l6nlVQ_dXfb0I56fLTncF1xWI1zDf2pbiQn9S3Z4n45_0C2yZy_FI8csWM2gYNqKK5VqsxkpbhlFJWyINxnyNA-FMBDhdJUZQ"  # noqa: E501
     )
 
 
@@ -173,7 +173,7 @@ def test_create_presigned_url_for_set() -> None:
 
     assert (
         result
-        == "https://rest.example.com/cache/set/%21%23%24%26%27%28%29%2A%2B%2C%2F%3A%3B%3D%3F%40%5B%5D/%21%23%24%26%27%28%29%2A%2B%2C%2F%3A%3B%3D%3F%40%5B%5D?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InRlc3RLZXlJZCJ9.eyJleHAiOjQwNzkyNzYwOTgsImNhY2hlIjoiISMkJicoKSorLC86Oz0_QFtdIiwia2V5IjoiISMkJicoKSorLC86Oz0_QFtdIiwibWV0aG9kIjpbInNldCJdLCJ0dGwiOjV9.GlsGrxuoMMvwyr-SHBxfAK_CEk55P218jcsBTW9PiXoYgd85BNuDaHcQJaE_31CRdJ5emXj_qIQZjFLz3LDb3zHSAHCSYzg_pDZyVB-yLaW4nOCiztaxlr_FsihgghHUziO2lFyPgNpx2iZUQ5RnUvaCkhwN8R-FbKhBQ4Oh8hG4xBuILEIA5fJ8PAhbvmqzgmgbzplbhPMVvNPVXbdEn5YCdqIuoo6oQTB8ksgm788d7zRBgJmcyF07lDviGFaXt7OYshBWxKZ8f8Iv9PTaDtIFWPJDdaYCTcaYoaOqA2VXFEFmqcuDwcRIaNGkaYd8emqnlKc4ItdASLWV5k1Wjg&ttl_milliseconds=5000"  # noqa: E501
+        == "https://api.example.com/cache/%21%23%24%26%27%28%29%2A%2B%2C%2F%3A%3B%3D%3F%40%5B%5D/%21%23%24%26%27%28%29%2A%2B%2C%2F%3A%3B%3D%3F%40%5B%5D?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6InRlc3RLZXlJZCJ9.eyJleHAiOjQwNzkyNzYwOTgsImNhY2hlIjoiISMkJicoKSorLC86Oz0_QFtdIiwia2V5IjoiISMkJicoKSorLC86Oz0_QFtdIiwibWV0aG9kIjpbInNldCJdLCJ0dGwiOjV9.GlsGrxuoMMvwyr-SHBxfAK_CEk55P218jcsBTW9PiXoYgd85BNuDaHcQJaE_31CRdJ5emXj_qIQZjFLz3LDb3zHSAHCSYzg_pDZyVB-yLaW4nOCiztaxlr_FsihgghHUziO2lFyPgNpx2iZUQ5RnUvaCkhwN8R-FbKhBQ4Oh8hG4xBuILEIA5fJ8PAhbvmqzgmgbzplbhPMVvNPVXbdEn5YCdqIuoo6oQTB8ksgm788d7zRBgJmcyF07lDviGFaXt7OYshBWxKZ8f8Iv9PTaDtIFWPJDdaYCTcaYoaOqA2VXFEFmqcuDwcRIaNGkaYd8emqnlKc4ItdASLWV5k1Wjg&ttl_seconds=5"  # noqa: E501
     )
 
 

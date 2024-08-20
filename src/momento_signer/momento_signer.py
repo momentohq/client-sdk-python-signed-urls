@@ -135,7 +135,7 @@ class MomentoSigner:
             ttl_seconds = signing_request.ttl_seconds()
             if ttl_seconds is None:
                 raise ValueError("ttl_seconds is required for SET operation.")
-            url = f"https://api.{hostname}/cache/{cache_name}/{cache_key}" f"?token={token}&ttl_seconds={ttl_seconds}"
+            url = f"https://api.{hostname}/cache/{cache_name}/{cache_key}?token={token}&ttl_seconds={ttl_seconds}"
             return url
         else:
             raise NotImplementedError(f"Unrecognized Operation: {signing_request.cache_operation()}")

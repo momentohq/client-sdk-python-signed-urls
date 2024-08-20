@@ -130,15 +130,12 @@ class MomentoSigner:
         cache_name = quote(signing_request.cache_name(), safe="")
         cache_key = quote(signing_request.cache_key(), safe="")
         if signing_request.cache_operation() == CacheOperation.GET:
-            return f"https://rest.{hostname}/cache/get/{cache_name}/{cache_key}?token={token}"
+            return f"https://api.{hostname}/cache/{cache_name}/{cache_key}?token={token}"
         elif signing_request.cache_operation() == CacheOperation.SET:
             ttl_seconds = signing_request.ttl_seconds()
             if ttl_seconds is None:
                 raise ValueError("ttl_seconds is required for SET operation.")
-            url = (
-                f"https://rest.{hostname}/cache/set/{cache_name}/{cache_key}"
-                f"?token={token}&ttl_milliseconds={ttl_seconds * 1000}"
-            )
+            url = f"https://api.{hostname}/cache/{cache_name}/{cache_key}" f"?token={token}&ttl_seconds={ttl_seconds}"
             return url
         else:
             raise NotImplementedError(f"Unrecognized Operation: {signing_request.cache_operation()}")
